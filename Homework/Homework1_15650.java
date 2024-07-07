@@ -1,3 +1,4 @@
+package Homework;
 public class Homework1_15650{
     public static void main(String[] args){
         /*

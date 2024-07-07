@@ -1,3 +1,4 @@
+package Homework;
 import java.util.Scanner;
 public class Homework2_15650 {
     public static void main(String[] args){

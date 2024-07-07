@@ -10,7 +10,7 @@ class Review {
     }
 
     public static void game() {
-        int num = rand.nextInt(1000) + 1; // Change to 100 to match the prompt
+        int num = rand.nextInt(100) + 1; // Change to 100 to match the prompt
         int i = 0;
         boolean continues = true;
         while (continues) {
