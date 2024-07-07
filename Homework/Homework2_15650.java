@@ -1,8 +1,12 @@
 package Homework;
+/*
+ This program gets the length, width, and height of a cubiod from the user and then calculates the volume and surface area of a cubiod. 
+ Author: Aman Nindra
+ */
 import java.util.Scanner;
 public class Homework2_15650 {
     public static void main(String[] args){
-        System.out.println("Author: Aman Nindra\nThis program shows how to calculate the volume and surface area of a cubiod using Java");
+        System.out.println("My name is Aman Nindra\nThis program calculates the volume and surface area of a cuboid.");
         Scanner userinput = new Scanner(System.in);
         System.out.print("Enter the cuboid length: ");
         double length = userinput.nextDouble();
