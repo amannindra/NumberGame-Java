@@ -1,4 +1,4 @@
-
+//https://bootcamp.cvn.columbia.edu/blog/java-projects-for-beginners-to-gain-skills/
 
 public class Top15JavaProjectIdeasforBeginners {
     public static void main(String[] args){
@@ -13,7 +13,7 @@ public class Top15JavaProjectIdeasforBeginners {
         //My own Problem
         //System.out.println(RemoveSpace("Top 15 Java Project Ideas for Beginners"));
 
-        
+
     
     }
     //Problem Addition
