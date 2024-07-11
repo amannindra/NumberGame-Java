@@ -13,7 +13,11 @@ public class Homework4_15650 {
         String year = JOptionPane.showInputDialog("This program determines leap year, writen by Aman Nindra.\nEnter a year (not earlier than 1582):");
         int yearint = Integer.parseInt(year);
         
-        if (yearint > 1582){
+        if (yearint < 1582){
+            JOptionPane.showMessageDialog(null, "There is no leap year before 1582");
+            
+        }
+        else{
             boolean isleapyear = (yearint % 4 == 0 && yearint % 100 != 0) || yearint % 400 == 0;
             
             if (isleapyear)
@@ -21,9 +25,6 @@ public class Homework4_15650 {
             else
                 JOptionPane.showMessageDialog(null, "The year " + yearint + " is not lap year");
             System.exit(0);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "There is no leap year before 1582");
         }
         System.exit(0);
             
