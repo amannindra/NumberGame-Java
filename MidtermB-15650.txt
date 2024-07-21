@@ -1,0 +1,44 @@
+1. Scanner - nextDouble()
+2. String - format()
+3. String - equals()
+4.
+5. Math - sqrt()
+6. String - charAt()
+7. String - length()
+8. String - compareTo()
+9. String - equalsIgnoreCase()
+10. Double - parseDouble()
+
+11. 
+    Scanner sc = new Scanner(system.in);
+    int number = sc.nextInt();
+    if(number % 3 == 0){
+    System.out.println("Number is divisble by 3");
+    } 
+    if(number % 5 == 0){
+    System.out.println("Number is divisble by 5");
+    }
+    if(number % 11 == 0){
+    System.out.println("Number is divisble by 11");
+    }
+
+12. 
+    Scanner sc = new Scanner(system.in);
+    System.out.print("Enter string 1: );
+    String first = sc.nextLine();
+    System.out.print("Enter string 2: );
+    String second = sc.nextLine();
+    System.out.print("Enter string 3: );
+    String third = sc.nextLine();
+
+    if ( first.compareTo(second) < 0 && first.compareTo(third) < 0){
+        System.out.println("The smallest string is ", first);
+    }
+    else if (second.compareTo(first) < 0 && second.compareTo(third) < 0){
+        System.out.println("The smallest string is ", second);
+    }
+    else{
+        System.out.println("The smallest string is ", third);
+    }
+
+    

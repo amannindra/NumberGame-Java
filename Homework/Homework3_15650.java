@@ -1,4 +1,4 @@
-package Homework;
+
 /*
 Homework
 @author: Aman Nindra
@@ -22,7 +22,7 @@ public class Homework3_15650 {
         
         double focus = Math.sqrt(Math.pow(majorRadius,2) - Math.pow(minorRadius,2));
         double area = Math.PI * majorRadius * minorRadius;
-        double perimeter = Math.PI*(3*(majorRadius + minorRadius) - Math.sqrt(10*majorRadius*minorRadius + 3 * (Math.pow(majorRadius,2) + Math.pow(minorRadius,2))));
+        double perimeter = Math.PI*(3*(majorRadius + minorRadius) - Math.sqrt(10 * majorRadius * minorRadius + 3 * (Math.pow(majorRadius,2) + Math.pow(minorRadius,2))));
 
         JOptionPane.showMessageDialog(null, "Focus: " + focus+"\n Area: " + area + "\nCircumference: " + perimeter);
         System.exit(0);
