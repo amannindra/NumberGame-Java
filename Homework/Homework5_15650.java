@@ -1,10 +1,14 @@
 package Homework;
-/*
-Author: Aman Nindra
-Description: This program ask the user for his restaurant order and calculates the total bill including tax and gratuity
- */
 
 import java.util.Scanner;
+
+/**
+ *Description: This program ask the user for his restaurant order and calculates the total bill including tax and gratuity
+ *@author Aman Nindra
+ *@version 1.0
+ *@since 07/21/2024
+ */
+
 
 public class Homework5_15650 {
     public static void main(String[] args) {
@@ -101,21 +105,24 @@ public class Homework5_15650 {
             System.out.print("Invalid negative quantity");
             System.exit(0);
         }
+        System.out.print("\n");
 
-        System.out.println("The item price for (" + quantity + " x " + name + 
-        ") is: $%0.2f" + sum);
+        System.out.printf("The item price for (" + quantity + " x " + name + 
+        ") is: $%.2f\n", sum);
         double tax = TAX_RATE * sum;
-        System.out.println("The sale tax is $%.2f" + tax);
+        System.out.printf("The sale tax is $%.2f:\n", tax);
+        System.out.print("\n");
         System.out.print("Enter the gratuity amount: $");
         int gratuity = userinput.nextInt();
         if (gratuity < 0) {
             System.out.println("Invalid gratuity amount");
             System.exit(0);
         }
-        double total = (1 + tax) * sum + gratuity;
-        System.out.printf("Your total bill is $%.2f\n" + total);
+        System.out.print("\n");
+        double total = tax + sum + gratuity;
+        
+        System.out.printf("Your total bill is $%.2f\n", total);
         System.out.print("Thank you for your order");
         System.exit(0);
-
     }   
 }
