@@ -123,6 +123,8 @@ public class Homework5_15650 {
         
         System.out.printf("Your total bill is $%.2f\n", total);
         System.out.print("Thank you for your order");
+        userinput.close();
         System.exit(0);
+        
     }   
 }
