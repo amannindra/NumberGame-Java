@@ -8,22 +8,26 @@ package Homework;
 
 public class SodaCan_15650 {
         private String drinkType;
-        private double radius = 1.195;
-        private double height = 4.83;
+        private double radius;
+        private double height;
         private double remainingSoda;
         public static final double PI = 3.14;
         public static final double MM_IN_INCH = 25.4;
-        public static final double L_OZ_PER_CUBIC_MM = 3.3814e-5;
+        public static final double FL_OZ_PER_CUBIC_MM = 3.3814e-5;
 
-        public SodaCan_15650(){
+        public SodaCan_15650() {
                 drinkType = "Soda";
+                radius = 1.195 * MM_IN_INCH;
+                height = 4.83 * MM_IN_INCH;
+                remainingSoda = PI * radius * radius * height * FL_OZ_PER_CUBIC_MM;
+
         }
 
         public SodaCan_15650(String drinkType1, double radius1, double height1) {
                 radius = radius1 * MM_IN_INCH;
                 drinkType = drinkType1;
-                height = height1;
-                remainingSoda = PI * radius * radius * height * L_OZ_PER_CUBIC_MM;
+                height = height1 * MM_IN_INCH;
+                remainingSoda = PI * radius * radius * height * FL_OZ_PER_CUBIC_MM;
         }
 
         // This method returns the DrinkType
@@ -44,7 +48,8 @@ public class SodaCan_15650 {
 
         // This method returns the Capacity of the can
         public double getFullCapacity() {
-                return PI * radius * radius * height * L_OZ_PER_CUBIC_MM;
+
+                return PI * radius * radius * height * FL_OZ_PER_CUBIC_MM;
         }
 
         public double getRemainingSoda() {
@@ -67,10 +72,12 @@ public class SodaCan_15650 {
         }
 
         public boolean refillSoda(double volume) {
-                if (getFullCapacity() > remainingSoda + volume) {
+                if (getFullCapacity() < remainingSoda + volume && volume >= 0) {
                         return false;
                 } else {
+                        System.out.println("---------------remainingSoda: " + remainingSoda);
                         remainingSoda += volume;
+                        System.out.println("---------------remainingSoda: " + remainingSoda);
                         return true;
                 }
         }
