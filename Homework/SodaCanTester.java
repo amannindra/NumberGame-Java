@@ -16,6 +16,10 @@ public class SodaCanTester {
                 System.out.printf("%s %s\n", "Can is full:      ", can.isFull());
                 System.out.println("Expected Value:    true");
 
+
+
+
+                
                 boolean result = can.drinkSoda(3);
                 System.out.printf("%s %.2f result = %s\n", "Drink 3fl. ounce.\nSoda can remaining volume is:",
                                 can.getRemainingSoda(), result);
@@ -66,6 +70,13 @@ public class SodaCanTester {
                                 can.getRemainingSoda(), result);
                 System.out.println("Expected Value: 5.00 result = false");
 
+
+
+
+
+
+
+
                 SodaCan_15650 canCoke = new SodaCan_15650("Coke", 1.3, 4.762);
                 System.out.printf("%s %.2f\n", "\nGet new full can of Coke: ", canCoke.getFullCapacity());
                 System.out.println("Expected Value:    14.00");
@@ -97,6 +108,13 @@ public class SodaCanTester {
                 System.out.printf("%s %.2f result = %s\n", "Refill with 14.1fl. ounce.\nCoke remain is:",
                                 canCoke.getRemainingSoda(), result);
                 System.out.println("Expected Value: 0.00 result = false");
+
+
+
+
+
+
+
 
                 SodaCan_15650 canPepsi = new SodaCan_15650("Pepsi", 1.5, 4.762);
                 System.out.printf("%s %s%s %.2f\n", "\nGet new full can of", canPepsi.getDrinkType(),

@@ -37,13 +37,13 @@ public class SodaCan_15650 {
 
         // This method returns the radius of the can
         public double getRadius() {
-                return radius;
+                return radius/ MM_IN_INCH;
 
         }
 
         // This method returns the height of the can
         public double getHeight() {
-                return height;
+                return height/ MM_IN_INCH;
         }
 
         // This method returns the Capacity of the can
@@ -75,13 +75,11 @@ public class SodaCan_15650 {
                 if (getFullCapacity() < remainingSoda + volume && volume >= 0) {
                         return false;
                 } else {
-                        System.out.println("---------------remainingSoda: " + remainingSoda);
                         remainingSoda += volume;
-                        System.out.println("---------------remainingSoda: " + remainingSoda);
                         return true;
                 }
         }
-
+        // This method checks in Remaining Soda is at full capacity
         public boolean isFull() {
 
                 return getRemainingSoda() == getFullCapacity() ? true : false;
