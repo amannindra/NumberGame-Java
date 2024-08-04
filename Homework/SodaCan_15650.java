@@ -1,7 +1,8 @@
 /*
 
 *Author: Aman Nindra
-*Description: This programm
+*Description: This programm calculates the remaining soda in fluid composition 
+* after a person drinks or adds soda to the can. It takes in type of drink, radius and height.
 */
 
 package Homework;
@@ -15,6 +16,8 @@ public class SodaCan_15650 {
         public static final double MM_IN_INCH = 25.4;
         public static final double FL_OZ_PER_CUBIC_MM = 3.3814e-5;
 
+        // This is the first constructor of the class. It takes in no values and leaves
+        // everything in default value
         public SodaCan_15650() {
                 drinkType = "Soda";
                 radius = 1.195 * MM_IN_INCH;
@@ -23,11 +26,12 @@ public class SodaCan_15650 {
 
         }
 
-        public SodaCan_15650(String drinkType1, double radius1, double height1) {
-                radius = radius1 * MM_IN_INCH;
-                drinkType = drinkType1;
-                height = height1 * MM_IN_INCH;
-                remainingSoda = PI * radius * radius * height * FL_OZ_PER_CUBIC_MM;
+        // This is the second constructor of the class. It takes in 2 values
+        public SodaCan_15650(String drinkType, double radius, double height) {
+                this.drinkType = drinkType;
+                this.radius = radius * MM_IN_INCH; // Convert radius to mm
+                this.height = height * MM_IN_INCH; // Convert height to mm
+                this.remainingSoda = getFullCapacity(); // Set remaining soda to full capacity
         }
 
         // This method returns the DrinkType
@@ -37,13 +41,13 @@ public class SodaCan_15650 {
 
         // This method returns the radius of the can
         public double getRadius() {
-                return radius/ MM_IN_INCH;
+                return radius / MM_IN_INCH;
 
         }
 
         // This method returns the height of the can
         public double getHeight() {
-                return height/ MM_IN_INCH;
+                return height / MM_IN_INCH;
         }
 
         // This method returns the Capacity of the can
@@ -56,6 +60,8 @@ public class SodaCan_15650 {
                 return remainingSoda;
         }
 
+        // This method returns a boolean indicating whether volumes is reduced in
+        // remainingSoda
         public boolean drinkSoda(double volume) {
                 double rem = getRemainingSoda();
                 if (volume < 0) {
@@ -79,6 +85,7 @@ public class SodaCan_15650 {
                         return true;
                 }
         }
+
         // This method checks in Remaining Soda is at full capacity
         public boolean isFull() {
 
