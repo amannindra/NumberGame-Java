@@ -49,7 +49,7 @@ public class Homework7_15650 {
     }
 
     public static double processFileFirstPass(File file)
-            throws IOException {
+        throws IOException {
         int count = 0;
         int sum = 0;
         int smallest = Integer.MAX_VALUE;
