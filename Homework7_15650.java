@@ -7,7 +7,7 @@ and numbers above average.
 
 */
 
-package Homework;
+
 
 import java.util.Scanner;
 import java.io.*;

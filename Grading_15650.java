@@ -3,74 +3,88 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.PrintWriter;
+/*
+ * Author: Aman Nindra
+ * Description: This program gets information from the .txt file and then creates another 
+ * .txt file showing the average HW score, lowest Hw score, and highest Hw score. It also prints in 
+ * the console the highest Hw score, lowest Hw score, and the average HW score.
+ */
+
 
 public class Grading_15650 {
 
-    /*
-     * student ID, hw 1, hw 2, hw 3, hw 4, hw 5, hw 6, hw 7, hw 8, midterm score,
-     * final exam score, labs score, quiz score
-     * 56049257 16 16 20 16 12 15 12 20 58 123 59 10
-     * 97201934 19 15 13 19 16 12 13 18 72 101 55 10
-     * 93589574 13 16 19 19 18 12 6 14 58 108 50 7
-     * 85404010 17 19 19 19 19 10 17 19 70 102 58 8
-     * 99608681 11 15 19 19 17 10 16 19 42 117 57 7
-     * 84918110 11 20 18 17 12 8 12 19 46 122 31 0
-     * 89307179 16 16 19 18 14 17 15 19 56 117 52 5
-     * 09250373 15 15 18 18 11 18 17 19 44 106 51 8
-     * 91909583 12 14 16 19 20 11 20 16 66 92 50 9
-     * 80262228 14 6 20 18 17 11 13 13 47 119 34 1
-     */
-
+    // These are lass constants
     static final int HOMEWORK_CNT = 8;
     private String fileName;
-    private double finalScoreAverage;
+    private double finalScoreAverage = 0;
     private int finalScoreMax = Integer.MIN_VALUE;
     private int finalScoreMin = Integer.MAX_VALUE;
 
+    // This is the constructor    
     public Grading_15650(String fileName) {
         this.fileName = fileName;
     }
-
+    // This function gets the information from the .txt file and inputs ID, Average H2, Lowest
+    //HW, and Highest HW for each students in a different .txt file
     public int processGrades(String outfileName) throws IOException {
         File files = new File(fileName);
-        Scanner inputFile = new Scanner(files);
-        File outputFile = new File(outfileName);
-        PrintWriter output = new PrintWriter(outputFile);
+       
 
-        ArrayList<Integer> numList = new ArrayList<>();
-        System.out.println(inputFile.nextLine());
         if (!files.exists()) {
             return -1;
-        } else if (!inputFile.hasNext()) {
+        }
+        Scanner inputFile = new Scanner(files);
+        File outputFile = new File(outfileName);
+        PrintWriter outputs = new PrintWriter(outputFile);
+        if (!inputFile.hasNext()) {
             return 0;
         } else {
-            output.print("      ID      Average HW      Lowest HW      Highest HW");
+            outputs.write(String.format("%-17s %-17s %-20s %-18s %-20s\n","","ID", 
+            "Average HW", "Lowest HW", "Highest HW"));            
+            int j = 0;
+        
             while (inputFile.hasNextLine()) {
-
-
-                System.out.print("Next line: " + inputFile.nextLine());
-                inputFile.nextInt();
-                for(int i = 0; i < 8; i++) {
-                    numList.add(inputFile.nextInt());
+             
+                int [] numList = new int[HOMEWORK_CNT];
+                int ID = inputFile.nextInt();
+                for(int i = 0; i < HOMEWORK_CNT; i++) {
+                    numList[i] = inputFile.nextInt();
                 }
-                int scor = inputFile.nextInt();
-                if (scor > finalScoreMax) {
-                    System.out.println("Has reached final score Max:" + scor);
-                    finalScoreMax = scor;
+     
+                int midTerm = inputFile.nextInt();
+                int finalexam = inputFile.nextInt();
+                int LabScore = inputFile.nextInt();
+                int quiz = inputFile.nextInt();
+                int high = getHighestScore(numList);
+                int low = getLowestScore(numList);
+                double average = getAverageScore(numList);
+                
+                
+                finalScoreAverage = (finalScoreAverage + finalexam);
+                j += 1;
+                if (finalexam > finalScoreMax){
+                    finalScoreMax = finalexam;
                 }
-                else if (scor < finalScoreMin){
-                    System.out.println("Has reached final score Min:" +scor);
-                    finalScoreMin = scor;
-                }
+                else if (finalexam < finalScoreMin){
+                    finalScoreMin = finalexam;
+                }            
+                outputs.write(String.format("%20s", ID) + 
+                String.format("%20s %.2f" ,"", average) + 
+                String.format("%20s", low)+
+                String.format("%20s\n" , high));
             }
-            return 0;
+            finalScoreAverage = finalScoreAverage /(double)j;
+            outputs.close();
+            return 2;
         }
     }
-
+    // This function prints the overall highest final score, lowest final score, and average final score.
     public void displayFinalScoreStat() {
-        // Method to display final score statistics
+       System.out.printf("Average final score is: %20.2f\n",finalScoreAverage );
+       System.out.printf("Highest final score is: %20d\n", finalScoreMax);
+       System.out.printf("Lowest final score is:  %20d\n", finalScoreMin);
     }
-
+    // This function gets the average of a integer array
     public static double getAverageScore(int[] scores) {
         int score = 0;
         for (int i = 0; i < scores.length; i++) {
@@ -78,7 +92,7 @@ public class Grading_15650 {
         }
         return score / (double) scores.length;
     }
-
+    // This function gets the highest number in the integer array
     public static int getHighestScore(int[] scores) {
         int maximum = Integer.MIN_VALUE;
         for (int i = 0; i < scores.length; i++) {
@@ -87,7 +101,7 @@ public class Grading_15650 {
         }
         return maximum;
     }
-
+    // This function gets the lowest number in the integer array
     public static int getLowestScore(int[] scores) {
         int minimum = Integer.MAX_VALUE;
         for (int i = 0; i < scores.length; i++) {
@@ -96,7 +110,8 @@ public class Grading_15650 {
         }
         return minimum;
     }
-
+    // This function gets the student score file and inputs it into processGrades function. 
+    // Then it displays the student score in the console
     public static void main(String[] args) throws IOException {
         // Replace XXXXX with last 5 digits of your student ID.
         final String OUTPUT_NAME = "OUTPUT-15650.TXT";
@@ -115,7 +130,7 @@ public class Grading_15650 {
         else {
             System.out.println("\nFile " + fileName + " contains " + result + " students.");
             System.out.println();
-            // sp.displayFinalScoreStat(); // display final exam average, high, and low
+            sp.displayFinalScoreStat(); // display final exam average, high, and low
         }
         scanner.close();
     }
