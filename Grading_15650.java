@@ -31,6 +31,7 @@ public class Grading_15650 {
        
 
         if (!files.exists()) {
+            
             return -1;
         }
         Scanner inputFile = new Scanner(files);
